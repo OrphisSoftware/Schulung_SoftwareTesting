@@ -11,6 +11,11 @@ namespace BusinessLogic
         public string CustomerName { get; }
         public double Balance { get; private set; }
 
+        public string AccountInfo
+        {
+            get { return $"{CustomerName}: {Balance}"; }
+        }
+
         public BankAccount(string customerName, double balance)
         {
             CustomerName = customerName;
@@ -26,7 +31,7 @@ namespace BusinessLogic
 
             if (Balance < value)
             {
-                throw new ArgumentOutOfRangeException(nameof(value),value, BalanceToLow);
+                throw new ArgumentOutOfRangeException(nameof(value), value, BalanceToLow);
             }
 
             Balance = Balance - value;
